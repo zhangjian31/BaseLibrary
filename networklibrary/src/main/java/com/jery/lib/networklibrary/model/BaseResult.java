@@ -5,27 +5,24 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 
 
-public class BaseResponse<T> implements Serializable {
+public class BaseResult implements Serializable {
     public static final int RESULT_SUCCESS = 200;
     public static final int RESULT_TOKEN_ERROR = 401;
     public static final int RESULT_RISK_ERROR = 600;
 
-    public BaseResponse() {
+    public BaseResult() {
     }
 
-    public BaseResponse(int retCode, String retMsg) {
+    public BaseResult(int retCode, String retMsg) {
         this.code = retCode;
         this.msg = retMsg;
     }
 
     @SerializedName("code")
-    private int code;
+    protected int code;
 
     @SerializedName("msg")
-    private String msg;
-
-    @SerializedName("result")
-    private T result;
+    protected String msg;
 
     public int getCode() {
         return code;
@@ -43,22 +40,6 @@ public class BaseResponse<T> implements Serializable {
         this.msg = msg;
     }
 
-    public T getResult() {
-        return result;
-    }
-
-    public void setResult(T result) {
-        this.result = result;
-    }
-
-    @Override
-    public String toString() {
-        return "BaseResponse{" +
-                "code=" + code +
-                ", msg='" + msg + '\'' +
-                ", result=" + result +
-                '}';
-    }
 
     public static final int errorCode = -0x00001;
     public static final String errorMsg = "网络异常,请稍候再试";
