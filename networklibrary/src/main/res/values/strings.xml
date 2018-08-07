@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">NetworkLibrary</string>
+
+    <string name="net_error">网络不稳定,稍后再试</string>
+    <string name="net_error_check_network">网络不稳定，稍后再试</string>
+    <string name="net_unknown_error">网络不稳定，稍后再试</string>
+    <!--refresh_token异常后跳转登录默认提示-->
+    <string name="oauth_error_to_login_default_tip">账户信息过期，请重新登录。</string>
+    <string name="data_get_fail">信息获取失败</string>
+    <string name="get_fail">获取失败</string>
+</resources>
