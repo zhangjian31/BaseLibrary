@@ -25,9 +25,9 @@ public class WeatherServiceImpl {
         return instance;
     }
 
-    public void getWeatherInfo(@NotNull String format, @NotNull String cityname, @NotNull String key, RequestCallBack callBack) {
+    public void getWeatherInfo( RequestCallBack callBack) {
         WeatherService userService = ServiceGenerator.createService(WeatherService.class);
-        HashMap<String, Object> params = WeatherParamsMaker.getWeatherParams(format, cityname, key);
+        HashMap<String, Object> params = WeatherParamsMaker.getWeatherParams();
         ServiceExecutor.getInstance().execute(userService.getWeatherInfo(params), callBack);
 
     }

@@ -10,11 +10,8 @@ import java.util.HashMap;
 class WeatherParamsMaker {
 
 
-    public static HashMap<String, Object> getWeatherParams(@NotNull String format, @NotNull String cityname, @NotNull String key) {
+    public static HashMap<String, Object> getWeatherParams() {
         HashMap<String, Object> hashMap = new HashMap<>();
-        hashMap.put("format", format);
-        hashMap.put("cityname", cityname);
-        hashMap.put("key", key);
         return ParamsUtils.checkedParams(hashMap);
     }
 

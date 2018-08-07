@@ -22,15 +22,15 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.getBtn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                getData();
-                getInputData();
+                getData();
+//                getInputData();
             }
         });
 
     }
 
     public void getData() {
-        WeatherServiceImpl.getInstance().getWeatherInfo("2", "北京", "41bcf09ab9a376819b6c093b97f95c82", new RequestCallBack("") {
+        WeatherServiceImpl.getInstance().getWeatherInfo( new RequestCallBack("") {
             @Override
             public void onNext(BaseResult baseResult) {
                 super.onNext(baseResult);
