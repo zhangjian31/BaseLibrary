@@ -3,9 +3,6 @@ package com.jery.lib.networklibrary.utils;
 import android.content.Context;
 import android.widget.Toast;
 
-/**
- * Created by PanJiafang on 2016/11/15.
- */
 
 public class NetToast {
     private static NetToast instance;

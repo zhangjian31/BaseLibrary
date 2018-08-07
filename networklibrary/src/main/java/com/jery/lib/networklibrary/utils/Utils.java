@@ -2,6 +2,7 @@ package com.jery.lib.networklibrary.utils;
 
 import android.content.Context;
 import android.text.TextUtils;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.internal.bind.TypeAdapters;
@@ -14,6 +15,7 @@ import com.jery.lib.networklibrary.adapter.LongTypeAdapter;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
+
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
