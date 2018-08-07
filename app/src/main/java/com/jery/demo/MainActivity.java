@@ -6,8 +6,10 @@ import android.util.Log;
 import android.view.View;
 
 import com.jery.lib.apiservicelibrary.entity.input.InputDataResult;
+import com.jery.lib.apiservicelibrary.entity.login.LoginResult;
 import com.jery.lib.apiservicelibrary.entity.weather.WeatherResult;
 import com.jery.lib.apiservicelibrary.service.data.InputDataServiceImpl;
+import com.jery.lib.apiservicelibrary.service.login.LoginServiceImpl;
 import com.jery.lib.apiservicelibrary.service.weather.WeatherServiceImpl;
 import com.jery.lib.baselibrary.R;
 import com.jery.lib.networklibrary.callback.RequestCallBack;
@@ -22,15 +24,16 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.getBtn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getData();
+//                getData();
 //                getInputData();
+                getLoginData();
             }
         });
 
     }
 
     public void getData() {
-        WeatherServiceImpl.getInstance().getWeatherInfo( new RequestCallBack("") {
+        WeatherServiceImpl.getInstance().getWeatherInfo(new RequestCallBack("") {
             @Override
             public void onNext(BaseResult baseResult) {
                 super.onNext(baseResult);
@@ -68,4 +71,26 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    public void getLoginData() {
+        LoginServiceImpl.getInstance().getLoginInfo("user_a", "paswd_a", new RequestCallBack("") {
+            @Override
+            public void onNext(BaseResult baseResult) {
+                super.onNext(baseResult);
+                if (baseResult != null) {
+                    if (baseResult.getCode() == 200) {
+                        LoginResult loginResult = (LoginResult) baseResult;
+                        Log.e("LoginResult=", loginResult.toString());
+                    }
+                }
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                super.onError(e);
+            }
+        });
+    }
+
+
 }
