@@ -1,5 +1,6 @@
 package com.jery.lib.apiservicelibrary.service.weather;
 
+import com.jery.lib.networklibrary.utils.ParamsUtils;
 import com.jery.lib.networklibrary.utils.Utils;
 
 import org.jetbrains.annotations.NotNull;
@@ -14,7 +15,7 @@ class WeatherParamsMaker {
         hashMap.put("format", format);
         hashMap.put("cityname", cityname);
         hashMap.put("key", key);
-        return Utils.checkedParams(hashMap);
+        return ParamsUtils.checkedParams(hashMap);
     }
 
 

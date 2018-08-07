@@ -2,6 +2,7 @@ package com.jery.demo;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import com.jery.lib.apiservicelibrary.entity.weather.WeatherResult;
 import com.jery.lib.apiservicelibrary.service.weather.WeatherServiceImpl;
@@ -32,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
                 if (baseResult != null) {
                     if (baseResult.getCode() == 200) {
                         WeatherResult weatherResult = (WeatherResult) baseResult;
+                        Log.e("WeatherResult=",weatherResult.toString());
                     }
                 }
             }

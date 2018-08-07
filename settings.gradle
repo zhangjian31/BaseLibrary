@@ -1,1 +1,1 @@
-include ':app', ':networklibrary', ':apiservicelibrary'
+include ':app', ':networklibrary', ':apiservicelibrary', ':configlibrary'

@@ -1,16 +1,12 @@
 package com.jery.lib.networklibrary.callback;
 
 import com.jery.lib.networklibrary.R;
-import com.jery.lib.networklibrary.exception.AuthenException;
 import com.jery.lib.networklibrary.exception.ResultException;
 import com.jery.lib.networklibrary.model.BaseResult;
-import com.jery.lib.networklibrary.utils.NetToast;
-
-import java.io.IOException;
+import com.jery.lib.networklibrary.utils.UIToast;
 
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
-import retrofit2.HttpException;
 
 public class RequestCallBack implements Observer<BaseResult> {
     private String tag;
@@ -48,9 +44,9 @@ public class RequestCallBack implements Observer<BaseResult> {
     @Override
     public void onError(Throwable e) {
         if (e instanceof ResultException) {
-            NetToast.getInstance().showToast(e.getMessage());
+            UIToast.getInstance().showToast(e.getMessage());
         } else {
-            NetToast.getInstance().showToast(R.string.get_fail);
+            UIToast.getInstance().showToast(R.string.get_fail);
         }
         if (disposable != null && !disposable.isDisposed()) {
             disposable.dispose();

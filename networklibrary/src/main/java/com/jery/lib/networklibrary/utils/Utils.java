@@ -1,19 +1,15 @@
 package com.jery.lib.networklibrary.utils;
 
-import android.content.Context;
-import android.text.TextUtils;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.internal.bind.TypeAdapters;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
+import com.jery.config.JeryConfig;
 import com.jery.lib.networklibrary.adapter.DoubleTypeAdapter;
 import com.jery.lib.networklibrary.adapter.FloatTypeAdapter;
 import com.jery.lib.networklibrary.adapter.IntegerTypeAdapter;
 import com.jery.lib.networklibrary.adapter.LongTypeAdapter;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
@@ -58,38 +54,13 @@ public class Utils {
 
                     builder = new Retrofit.Builder()
                             .client(getOkHttpClient())
-                            .baseUrl("http://v.juhe.cn:80")
+                            .baseUrl(JeryConfig.baseUrl)
                             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                             .addConverterFactory(GsonConverterFactory.create(gson));
                 }
             }
         }
         return builder;
-    }
-
-
-    public static void initData(Context context) {
-//        initDeviceId(context);
-    }
-
-    public static boolean hasValue(Object data) {
-        if (data instanceof String)
-            return !(TextUtils.isEmpty((String) data) || data.equals("null"));
-        else
-            return false;
-    }
-
-    public static HashMap<String, Object> checkedParams(HashMap<String, Object> params) {
-        HashMap<String, Object> result = new HashMap<>();
-        for (Map.Entry<String, Object> entry : params.entrySet()) {
-            if (entry.getValue() instanceof String) {
-                if (hasValue(entry.getValue()))
-                    result.put(entry.getKey(), entry.getValue());
-            } else if (entry.getValue() != null) {
-                result.put(entry.getKey(), entry.getValue());
-            }
-        }
-        return result;
     }
 
 

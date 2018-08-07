@@ -10,6 +10,7 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/apiservicelibrary" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/configlibrary" />
             <option value="$PROJECT_DIR$/networklibrary" />
           </set>
         </option>

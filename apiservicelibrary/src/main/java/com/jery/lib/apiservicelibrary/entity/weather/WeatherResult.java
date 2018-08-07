@@ -16,6 +16,15 @@ public class WeatherResult extends BaseResult {
         this.result = result;
     }
 
+    @Override
+    public String toString() {
+        return "WeatherResult{" +
+                "result=" + result +
+                ", code=" + code +
+                ", msg='" + msg + '\'' +
+                '}';
+    }
+
     public class Result {
         @SerializedName("today")
         private Today today;
@@ -26,6 +35,13 @@ public class WeatherResult extends BaseResult {
 
         public void setToday(Today today) {
             this.today = today;
+        }
+
+        @Override
+        public String toString() {
+            return "Result{" +
+                    "today=" + today +
+                    '}';
         }
     }
 
@@ -79,6 +95,17 @@ public class WeatherResult extends BaseResult {
 
         public void setDressing_advice(String dressing_advice) {
             this.dressing_advice = dressing_advice;
+        }
+
+        @Override
+        public String toString() {
+            return "Today{" +
+                    "temperature='" + temperature + '\'' +
+                    ", weather='" + weather + '\'' +
+                    ", wind='" + wind + '\'' +
+                    ", week='" + week + '\'' +
+                    ", dressing_advice='" + dressing_advice + '\'' +
+                    '}';
         }
     }
 }

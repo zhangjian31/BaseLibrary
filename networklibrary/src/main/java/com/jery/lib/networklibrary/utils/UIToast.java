@@ -4,20 +4,20 @@ import android.content.Context;
 import android.widget.Toast;
 
 
-public class NetToast {
-    private static NetToast instance;
+public class UIToast {
+    private static UIToast instance;
 
     private Context context;
     private Toast mToast;
 
-    private NetToast() {
+    private UIToast() {
     }
 
-    public static NetToast getInstance() {
+    public static UIToast getInstance() {
         if (instance == null) {
-            synchronized (NetToast.class) {
+            synchronized (UIToast.class) {
                 if (instance == null)
-                    instance = new NetToast();
+                    instance = new UIToast();
             }
         }
         return instance;
