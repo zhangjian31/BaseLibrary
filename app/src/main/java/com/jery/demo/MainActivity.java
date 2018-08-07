@@ -4,11 +4,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+
 import com.jery.lib.apiservicelibrary.entity.weather.WeatherResult;
 import com.jery.lib.apiservicelibrary.service.weather.WeatherServiceImpl;
 import com.jery.lib.baselibrary.R;
 import com.jery.lib.networklibrary.callback.RequestCallBack;
-import com.jery.lib.networklibrary.model.BaseResult;
+import com.jery.lib.networklibrary.model.BaseResponse;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,12 +29,12 @@ public class MainActivity extends AppCompatActivity {
     public void getData() {
         WeatherServiceImpl.getInstance().getWeatherInfo("2", "北京", "41bcf09ab9a376819b6c093b97f95c82", new RequestCallBack("") {
             @Override
-            public void onNext(BaseResult baseResult) {
+            public void onNext(BaseResponse baseResult) {
                 super.onNext(baseResult);
                 if (baseResult != null) {
                     if (baseResult.getCode() == 200) {
-                        WeatherResult weatherResult = (WeatherResult) baseResult;
-                        Log.e("WeatherResult=",weatherResult.toString());
+                        WeatherResult weatherResult = (WeatherResult) baseResult.getResult();
+                        Log.e("WeatherResult=", baseResult.toString());
                     }
                 }
             }

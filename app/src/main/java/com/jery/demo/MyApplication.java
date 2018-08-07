@@ -15,7 +15,7 @@ public class MyApplication extends MultiDexApplication {
     @Override
     public void onCreate() {
         super.onCreate();
-        new JeryConfig.JeryConfigBuilder().baseUrl("http://v.juhe.cn").create();
+        new JeryConfig.JeryConfigBuilder().baseUrl("http://www.jeryzhang.cn").create();
         boolean mainProcess = mainProcess();
         if (mainProcess) {
             UIToast.getInstance().init(this);

@@ -5,24 +5,27 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 
 
-public class BaseResult implements Serializable {
+public class BaseResponse<T> implements Serializable {
     public static final int RESULT_SUCCESS = 200;
     public static final int RESULT_TOKEN_ERROR = 401;
     public static final int RESULT_RISK_ERROR = 600;
 
-    public BaseResult() {
+    public BaseResponse() {
     }
 
-    public BaseResult(int retCode, String retMsg) {
+    public BaseResponse(int retCode, String retMsg) {
         this.code = retCode;
         this.msg = retMsg;
     }
 
-    @SerializedName("resultcode")
-    public int code;
+    @SerializedName("code")
+    private int code;
 
-    @SerializedName("reason")
-    public String msg;
+    @SerializedName("msg")
+    private String msg;
+
+    @SerializedName("result")
+    private T result;
 
     public int getCode() {
         return code;
@@ -38,6 +41,23 @@ public class BaseResult implements Serializable {
 
     public void setMsg(String msg) {
         this.msg = msg;
+    }
+
+    public T getResult() {
+        return result;
+    }
+
+    public void setResult(T result) {
+        this.result = result;
+    }
+
+    @Override
+    public String toString() {
+        return "BaseResponse{" +
+                "code=" + code +
+                ", msg='" + msg + '\'' +
+                ", result=" + result +
+                '}';
     }
 
     public static final int errorCode = -0x00001;

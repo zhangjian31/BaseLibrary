@@ -2,13 +2,13 @@ package com.jery.lib.networklibrary.callback;
 
 import com.jery.lib.networklibrary.R;
 import com.jery.lib.networklibrary.exception.ResultException;
-import com.jery.lib.networklibrary.model.BaseResult;
+import com.jery.lib.networklibrary.model.BaseResponse;
 import com.jery.lib.networklibrary.utils.UIToast;
 
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
-public class RequestCallBack implements Observer<BaseResult> {
+public class RequestCallBack implements Observer<BaseResponse> {
     private String tag;
     private boolean broadCastResult;
     protected Disposable disposable;
@@ -38,7 +38,7 @@ public class RequestCallBack implements Observer<BaseResult> {
     }
 
     @Override
-    public void onNext(BaseResult baseResult) {
+    public void onNext(BaseResponse baseResult) {
     }
 
     @Override

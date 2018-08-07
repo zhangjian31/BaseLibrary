@@ -4,7 +4,8 @@ package com.jery.lib.networklibrary.service;
 import com.jery.lib.networklibrary.callback.RequestCallBack;
 import com.jery.lib.networklibrary.exception.AuthenException;
 import com.jery.lib.networklibrary.exception.ResultException;
-import com.jery.lib.networklibrary.model.BaseResult;
+import com.jery.lib.networklibrary.model.BaseResponse;
+
 import io.reactivex.Observable;
 import io.reactivex.ObservableSource;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -36,16 +37,16 @@ public class ServiceExecutor {
      * @param observable
      * @param observer
      */
-    public void execute(Observable<? extends BaseResult> observable, RequestCallBack observer) {
+    public void execute(Observable<? extends BaseResponse> observable, RequestCallBack observer) {
         // 如果subscriber == null，则实例化一个不发送结果的Callback
         if (observer == null)
             observer = new RequestCallBack("null", false);
 
         observable
                 .observeOn(Schedulers.io())
-                .map(new Function<BaseResult, BaseResult>() {
+                .map(new Function<BaseResponse, BaseResponse>() {
                     @Override
-                    public BaseResult apply(BaseResult baseResult) throws Exception {//拿到结果，先分析返回码，特殊返回码特殊处理，如401 token过期则发送token过期错误事件
+                    public BaseResponse apply(BaseResponse baseResult) throws Exception {//拿到结果，先分析返回码，特殊返回码特殊处理，如401 token过期则发送token过期错误事件
 
                         //统一处理错误码
                         handleBaseResult(baseResult);
@@ -69,12 +70,12 @@ public class ServiceExecutor {
                             public ObservableSource<?> apply(Throwable throwable) throws Exception {
                                 if (throwable instanceof AuthenException) {
                                     // Request token refresh
-//                                    BaseResult result = OauthServiceImpl.getInstance().getAccessTokenSync();
-//                                    if (result.getRetCode() == BaseResult.RESULT_SUCCESS) { //获取到token
+//                                    BaseResponse result = OauthServiceImpl.getInstance().getAccessTokenSync();
+//                                    if (result.getRetCode() == BaseResponse.RESULT_SUCCESS) { //获取到token
 //
 //                                        return Observable.timer(3, TimeUnit.SECONDS);
 //
-//                                    } else if (result.getRetCode() == BaseResult.RESULT_RISK_ERROR) { //设备被加入到黑名单
+//                                    } else if (result.getRetCode() == BaseResponse.RESULT_RISK_ERROR) { //设备被加入到黑名单
 //
 //                                        return Observable.error(new RiskControlException(result.getRetMsg()));
 //
@@ -96,7 +97,7 @@ public class ServiceExecutor {
 
     }
 
-    private void handleBaseResult(BaseResult baseResult) {
+    private void handleBaseResult(BaseResponse baseResult) {
 
     }
 
